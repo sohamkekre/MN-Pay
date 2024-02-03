@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Donation Portal{% endblock title %}
+{% block content %}
+<div class = "text-justify text-dark ml-5 mr-5">
+        <h1>Make a Donation</h1>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Submit Donation</button>
+        </form>
+    
+        <!-- PayPal Donation Button -->
+        <!-- PayPal Logo --><table border="0" cellpadding="10" cellspacing="0" align="center"><tr><td align="center"></td></tr><tr><td align="center"><a href="https://www.paypal.com/in/webapps/mpp/paypal-popup" title="How PayPal Works" onclick="javascript:window.open('https://www.paypal.com/in/webapps/mpp/paypal-popup','WIPaypal','toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=yes, resizable=yes, width=1060, height=700'); return false;"><img src="https://www.paypalobjects.com/webstatic/mktg/Logo/pp-logo-150px.png" border="0" alt="PayPal Logo"></a></td></tr></table><!-- PayPal Logo -->
+        <div class="" style="padding-left: 605px;">{{ paypal_form.render }}</div>
+    
+</div>
+{% endblock content %}

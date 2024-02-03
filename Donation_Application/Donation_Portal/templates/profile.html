@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Profile{% endblock title %}
+{% block content %}
+<div class="d-flex p-2">
+<!-- Profile Form  -->
+  <div class="p-5 w-50 mr-4 ml-4">
+   <form  action="" method="post">
+    {% csrf_token %}
+    {% if messages %}
+    {% for message in messages %}
+      <p {% if message.tags %} class ="alert alert-{{message.tags}} mb-5" {% endif %}>{{message}}</p>
+    {% endfor %}
+    {% endif %}
+    <div class="h5 text-success">
+      Enter the details to add a new profile
+    </div>
+    {% for fm in form%}
+      <div>
+        <div class="text-dark">
+          {{fm.label_tag}} {{fm}}
+        </div> 
+        <small class="text-danger">{{fm.errors|striptags}}</small><br>
+      </div>
+    {% endfor %}
+      <div class="">
+        <input type="submit" class="btn btn-outline-success btn-lg" value="Add New Profile">
+      </div>
+   </form>
+  </div>
+<!-- Profile list  -->
+  <div class="d-flex p-4 w-50 mr-4 ml-4">
+    <div class="row">
+     {% for prf in proff  %}
+          <div class="card" style="width: 45%; margin: auto; margin-top: 1rem;">
+            <div class="card-body">    
+              <h3>Profile {{forloop.counter}}</h3>  
+              <p class="text-primary">Number: {{prf.phone}}</p>
+              <p>Address: {{prf.address}}</p>
+              <p>Country: {{prf.country}}</p>
+              <p>Account Number: {{prf.ac_number}}</p> 
+              <p>IFSC Code: {{prf.ifsc_code}}</p> 
+              <a class="btn btn-success margin-auto" href="#">Edit</a>
+              <a class="btn btn-warning margin-auto" href="#">Delete</a>
+            </div>
+          </div>
+     <!-- </div> -->
+     {% endfor %}
+    </div>
+   </div>
+  </div>
+</div>
+{% endblock content %}

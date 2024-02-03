@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Transactions{% endblock title %}
+{% block content %}
+<!-- New Style -->
+<div class="d-flex flex-column justify-content-around  pt-3 pb-3">
+        {% for tr in trans  %}  
+        <div class="card mt-5">
+            <div class="card-body">
+                <h4 class="fs-19 mb-0">
+                <label class="text-success ml-2 mr-2">Transaction {{forloop.counter}}</label><span class="badge bg-warning ml-2 ms-1"><i>Date: {{tr.date}}</i></span>
+                </h4>  
+            <hr>
+            <div class="ml-4 d-flex flex-row justify-content-around w-0">
+                <div>Payer : {{tr.sender | capfirst}}</div> 
+                <div>Payee : {{tr.receiver | capfirst}}</div>
+            </div>
+            <hr>
+            <div class="ml-4 d-flex flex-row justify-content-around w-0">
+                <div>Payer paypal email : {{tr.sender_paypal_email}}</div>
+                <div>Payee paypal email : {{tr.receiver_paypal_email}}</div>
+            </div>
+            <hr>
+            <div class="ml-4 d-flex flex-row justify-content-around w-0">
+                <div>Amount : {{tr.amount}}</div>
+                <div>Currency: {{tr.currency | upper}}</div>
+            </div> 
+            <hr>
+            <div class="ml-4 d-flex flex-row justify-content-around w-100">
+                <div>Mode of Payment: {{tr.mode_of_payment}}</div>
+                <div>Payment Status: {{tr.payment_status}}</div>
+            </div>
+            </div>    
+        </div>    
+        {% endfor %}
+</div>
+{% endblock content %}

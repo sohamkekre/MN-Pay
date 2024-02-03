@@ -1,0 +1,39 @@
+1. First open the application in vs code.
+
+2. Start cmd and locate to folder where ngrok lies.
+
+3. In cmd after locating to the folder where ngrok is, run the command "ngrok http 2002" or (any number on which u want to run your url).
+
+4. Now in cmd you will get a url named forwarding like:- "https://c5bb-117-199-44-84.ngrok-free.app", copy this url.
+
+5. Move to vscode and in the app of application go to settings.py.
+
+6. In setting.py ther will be two variables "ALLOWED_HOSTS" and "CSRF_TRUSTED_ORIGINS".
+
+7. Now in those varible we have to paste the url which we copied from cmd in a specific format explained below:-
+    "ALLOWED_HOSTS = ['c5bb-117-199-44-84.ngrok-free.app']"
+    "CSRF_TRUSTED_ORIGINS = ['https://c5bb-117-199-44-84.ngrok-free.app']".
+
+8. Now open terminal and locate to folder where manage.py file lies.
+
+9. To run or start the website run the following command:- 
+    "python manage.py runserver 2002".
+
+10.Now open another terminal and locate to folder where startsocket.py lies.
+
+11.To run the startsocket run command:-
+    "python manage.py startsocket".
+
+12.Now minimize vscode and start sql workbench.
+
+13.Now open vscode again and in terminal move to Miner_Application folder and in that folder there are two files NGO_Miner.py and receiver.py.
+
+14.We have to start both files and for that use below commands respectively:-
+    "python NGO_Miner.py"
+    "python receiver.py".
+
+15.These are the steps by which we caNN run the whole application successfully.
+
+16.To login in website as well as in admin the credentials are:
+	Email: soham@gmail.com
+	pass : soham123456
